@@ -5,7 +5,8 @@ var getCountryInfo = function (countryName) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
+                console.log(data)
+                displayCountryInfo(data);
             });
         }
     })
@@ -17,6 +18,23 @@ var getCountryInfo = function (countryName) {
             }
         })
 };
+
+var displayCountryInfo = function(data) {
+    var countryName = data.country;
+    console.log(countryName);
+    var cases = data.cases;
+    console.log(cases);
+    var casesToday = data.todayCases;
+    console.log(casesToday);
+    var deaths = data.deaths;
+    console.log(deaths);
+    var deathsToday = data.todayDeaths;
+    console.log(deathsToday);
+    var recovered = data.recovered;
+    console.log(recovered);
+    var recoveredToday = data.todayRecovered;
+    console.log(recoveredToday);
+}
 
 var getStateInfo = function (stateName) {
     var apiUrl = "https://disease.sh/v3/covid-19/states/" + stateName;
