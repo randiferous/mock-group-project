@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body class="tile is-ancestor">
-    <div class="tile is-12">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <h1 class="tile is-child">Covid-19 Tracker</h1>
-          <div id="modal1" class="modal">
-            <p class="center-align">Unable to connect to network.</p>
-          </div>
-          <div id="flag-placeholder" class="tile is-child"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Covid-19 Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body class="has-background-grey-light">
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-1 has-text-centered">Covid-19 Tracker by Country</h1>
+      <div class="columns">
+        <div class="column is-4">
+          <form id="input-form">
+            <div class="field m-0">
+              <label class="label title is-4 has-text-centered m-0">Country Name</label>
+              <div class="control column is-three-fifths is-offset-one-fifth">
+                <input id="country-name" class="input is-focused is-small" type="text" placeholder="Enter country name">
+              </div>
+            </div>
+            <div class="control">
+              <button class="button column is-half is-offset-one-quarter" type="submit">Submit</button>
+            </div>
+          </form>
+          <aside class="menu">
+            <p class="menu-label has-text-centered mt-5 title is-5 has-text-black">
+              Previous Searches
+            </p>
+            <ul id="country-list" class="menu-list"></ul>
+          </aside>
+        </div>
+        <div class="column is-8">
+        </div>
+        <div id="error-modal" class="modal">
+          <div class="modal-background"></div>
+            <div class="modal-content has-text-centered has-text-white">
+              <p>Unable to connect to network.</p>
+            </div>
         </div>
       </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
+  </section>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
