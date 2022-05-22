@@ -31,8 +31,10 @@ api integration can be done before/separately from html basic layout
 - throughout project, i had to ask myself: am i forcing something? or can I settle for an easier simpler approach?
 - making this responsive is something to keep track of
 - why doesn't background cover full page
+- button size is bothering me
 
 Issue with Bulma: a lot of different fonts going on
 Issue with restcountry api: when searching for China, grabs Hong Kong first
 
-- 1st meeting: settle on an idea, and establish github workflow (testing pushes and pulls)
+
+- 1st meeting: settled on an idea, and establish github workflow (testing pushes and pulls)

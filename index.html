@@ -15,12 +15,13 @@
     <div class="container">
       <h1 class="title is-1 has-text-centered">Covid-19 Tracker by Country</h1>
       <div class="columns">
+        <!-- form and search history -->
         <div class="column is-4">
           <form id="input-form">
             <div class="field m-0">
               <label class="label title is-4 has-text-centered m-0">Country Name</label>
               <div class="control column is-three-fifths is-offset-one-fifth">
-                <input id="country-name" class="input is-focused is-small" type="text" placeholder="Enter country name">
+                <input id="country-name" class="input is-focused is-medium" type="text" placeholder="Enter country name">
               </div>
             </div>
             <div class="control is-flex is-justify-content-center">
@@ -34,15 +35,15 @@
             <ul id="country-list" class="menu-list mx-6"></ul>
           </aside>
         </div>
+        <!-- country and covid information -->
         <div class="column is-8">
           <h1 id="country-title" class="is-size-2 has-text-centered is-underlined"></h1>
           <div class="columns">
             <div class="column is-4">
-              <div class="columns is-flex is-justify-content-center">
-                <img id="country-flag" class="column is-6">
+              <div class="columns is-mobile is-flex is-justify-content-center">
+                <img id="country-flag" class="column is-6 is-one-quarter-mobile">
               </div>
             </div>
-
             <ul class="column is-4 has-text-weight-bold has-text-centered">
               <li id="continent-div"></li>
               <li id="subregion-div"></li>
@@ -73,6 +74,18 @@
             </ul>
           </div>
           </header>
+        </div>
+        <div id="country-modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content has-text-centered has-text-white">
+            <p>Please provide country name.</p>
+          </div>
+        </div>
+        <div id="search-modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content has-text-centered has-text-white">
+            <p>Country name cannot be found.</p>
+          </div>
         </div>
         <div id="error-modal" class="modal">
           <div class="modal-background"></div>

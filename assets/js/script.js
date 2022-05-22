@@ -1,6 +1,8 @@
 var inputFormEl = document.querySelector("#input-form");
 var countryInputEl = document.querySelector("#country-name");
-var modal = document.querySelector("#error-modal");
+var errorModal = document.querySelector("#error-modal");
+var searchModal = document.querySelector("#search-modal");
+var countryModal = document.querySelector("#country-modal");
 var searchHistoryEl = document.querySelector("#country-list");
 var countryTitleEl = document.querySelector("#country-title");
 var countryFlagEl = document.querySelector("#country-flag");
@@ -25,15 +27,16 @@ var countryStorage = [];
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var countryName = countryInputEl.value.trim();
-    
+
     if (countryName) {
         countryInputEl.value = "";
-        saveCountry(countryName);
+        getCovidInfo(countryName);
+        getMainInfo(countryName);
     } else {
-        modal.style.display = "flex";
+        countryModal.style.display = "flex";
 
         window.onclick = function (event) {
-            modal.style.display = "none";
+            countryModal.style.display = "none";
         }
     }
 };
@@ -41,10 +44,8 @@ var formSubmitHandler = function (event) {
 var saveCountry = function (countryName) {
     countryStorage.push(countryName);
     localStorage.setItem("countries", JSON.stringify(countryStorage));
-    
+
     searchMenu(countryName);
-    getCovidInfo(countryName);
-    getMainInfo(countryName);
 };
 
 var loadCountry = function () {
@@ -82,20 +83,21 @@ var getCovidInfo = function (countryName) {
         if (response.ok) {
             response.json().then(function (data) {
                 displayCovidInfo(data);
+                saveCountry(countryName);
             });
         } else {
-            modal.style.display = "flex";
+            searchModal.style.display = "flex";
 
             window.onclick = function (event) {
-                modal.style.display = "none";
+                searchModal.style.display = "none";
             }
         }
     })
         .catch(function (error) {
-            modal.style.display = "flex";
+            errorModal.style.display = "flex";
 
             window.onclick = function (event) {
-                modal.style.display = "none";
+                errorModal.style.display = "none";
             }
         })
 };
@@ -137,18 +139,18 @@ var getMainInfo = function (countryName) {
                 displayMainInfo(data);
             });
         } else {
-            modal.style.display = "flex";
+            searchModal.style.display = "flex";
 
             window.onclick = function (event) {
-                modal.style.display = "none";
+                searchModal.style.display = "none";
             }
         }
     })
         .catch(function (error) {
-            modal.style.display = "flex";
+            errorModal.style.display = "flex";
 
             window.onclick = function (event) {
-                modal.style.display = "none";
+                errorModal.style.display = "none";
             }
         })
 }
@@ -176,6 +178,6 @@ var displayMainInfo = function (data) {
     currencyEl.textContent = "Currency: " + currencyName;
 }
 
-inputFormEl.addEventListener("submit",formSubmitHandler);
+inputFormEl.addEventListener("submit", formSubmitHandler);
 
 loadCountry();
