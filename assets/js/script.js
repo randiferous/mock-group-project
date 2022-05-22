@@ -1,19 +1,42 @@
-var modal = document.getElementById("modal1")
-var flagPlaceholder = document.querySelector("#flag-placeholder");
-var countryStorage = [];
+var inputFormEl = document.querySelector("#input-form")
+var countryInputEl = document.querySelector("#country-name")
+var modal = document.querySelector("#error-modal")
+// var countryStorage = [];
 
-var getCountryCovidInfo = function (countryName) {
+var formSubmitHandler = function (event) {
+    event.preventDefault();
+    var countryName = countryInputEl.value.trim();
+    console.log(countryName);
+    
+    if (countryName) {
+        countryInputEl.value = "";
+    } else {
+        modal.style.display = "flex";
+
+        window.onclick = function (event) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+var getCovidInfo = function (countryName) {
     var apiUrl = "https://disease.sh/v3/covid-19/countries/" + countryName;
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
                 console.log(data);
-                displayCountryCovidInfo(data);
+                displayCovidInfo(data);
             });
+        } else {
+            modal.style.display = "flex";
+
+            window.onclick = function (event) {
+                modal.style.display = "none";
+            }
         }
     })
         .catch(function (error) {
-            modal.style.display = "block";
+            modal.style.display = "flex";
 
             window.onclick = function (event) {
                 modal.style.display = "none";
@@ -21,7 +44,7 @@ var getCountryCovidInfo = function (countryName) {
         })
 };
 
-var displayCountryCovidInfo = function (data) {
+var displayCovidInfo = function (data) {
     var countryName = data.country;
     console.log(countryName);
     var active = data.active;
@@ -44,19 +67,25 @@ var displayCountryCovidInfo = function (data) {
     console.log(tests);
 }
 
-var getCountryMainInfo = function (countryName) {
+var getMainInfo = function (countryName) {
     var apiUrl = "https://restcountries.com/v3.1/name/" + countryName;
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
                 console.log(data);
-                displayCountryMainInfo(data);
+                displayMainInfo(data);
             });
+        } else {
+            modal.style.display = "flex";
+
+            window.onclick = function (event) {
+                modal.style.display = "none";
+            }
         }
     })
         .catch(function (error) {
-            modal.style.display = "block";
+            modal.style.display = "flex";
 
             window.onclick = function (event) {
                 modal.style.display = "none";
@@ -64,8 +93,8 @@ var getCountryMainInfo = function (countryName) {
         })
 }
 
-var displayCountryMainInfo = function (data) {
-    var continent = data [0].continents[0];
+var displayMainInfo = function (data) {
+    var continent = data[0].continents[0];
     console.log(continent);
     var subregion = data[0].subregion;
     console.log(subregion);
@@ -90,12 +119,10 @@ var displayCountryMainInfo = function (data) {
     console.log(currencyName);
 }
 
-var saveCountry = function (countryName) {
-    countryStorage.push(countryName);
-    localStorage.setItem("countries", JSON.stringify(countryStorage));
-    console.log(countryStorage);
-}
+// var saveCountry = function (countryName) {
+//     countryStorage.push(countryName);
+//     localStorage.setItem("countries", JSON.stringify(countryStorage));
+//     console.log(countryStorage);
+// };
 
-getCountryCovidInfo("South Korea");
-getCountryMainInfo("South Korea")
-saveCountry("South Korea");
+inputFormEl.addEventListener("submit",formSubmitHandler);
