@@ -1,4 +1,4 @@
-console.log("Hello World!")
+console.log("Bye World!")
 
 var inputFormEl = document.querySelector("#input-form")
 var countryInputEl = document.querySelector("#country-name")
