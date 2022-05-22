@@ -1,15 +1,16 @@
-var inputFormEl = document.querySelector("#input-form")
-var countryInputEl = document.querySelector("#country-name")
-var modal = document.querySelector("#error-modal")
-// var countryStorage = [];
+var inputFormEl = document.querySelector("#input-form");
+var countryInputEl = document.querySelector("#country-name");
+var modal = document.querySelector("#error-modal");
+var searchHistoryEl = document.querySelector("#country-list");
+var countryStorage = [];
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var countryName = countryInputEl.value.trim();
-    console.log(countryName);
     
     if (countryName) {
         countryInputEl.value = "";
+        saveCountry(countryName);
     } else {
         modal.style.display = "flex";
 
@@ -17,6 +18,36 @@ var formSubmitHandler = function (event) {
             modal.style.display = "none";
         }
     }
+};
+
+var saveCountry = function (countryName) {
+    countryStorage.push(countryName);
+    localStorage.setItem("countries", JSON.stringify(countryStorage));
+    
+    searchMenu(countryName);
+};
+
+var loadCountry = function () {
+    var storedCountry = localStorage.getItem("countries");
+    if (!storedCountry) {
+        return false;
+    }
+    countryStorage = JSON.parse(storedCountry);
+
+    for (var i = 0; i < countryStorage.length; i++) {
+        var countryName = countryStorage[i];
+        searchMenu(countryName);
+    }
+}
+
+var searchMenu = function (countryName) {
+    var countryListEl = document.createElement("li");
+    var countryListContent = document.createElement("a");
+    countryListContent.classList = "button is-dark my-2"
+    countryListContent.textContent = countryName;
+    countryListEl.appendChild(countryListContent);
+    searchHistoryEl.appendChild(countryListEl);
+
 }
 
 var getCovidInfo = function (countryName) {
@@ -119,10 +150,6 @@ var displayMainInfo = function (data) {
     console.log(currencyName);
 }
 
-// var saveCountry = function (countryName) {
-//     countryStorage.push(countryName);
-//     localStorage.setItem("countries", JSON.stringify(countryStorage));
-//     console.log(countryStorage);
-// };
-
 inputFormEl.addEventListener("submit",formSubmitHandler);
+
+loadCountry();
