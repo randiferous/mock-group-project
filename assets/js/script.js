@@ -1,3 +1,5 @@
+console.log("Hello World!")
+
 var inputFormEl = document.querySelector("#input-form")
 var countryInputEl = document.querySelector("#country-name")
 var modal = document.querySelector("#error-modal")
