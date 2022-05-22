@@ -10,6 +10,15 @@ var capitalEl = document.querySelector("#capital-div");
 var populationEl = document.querySelector("#population-div");
 var languageEl = document.querySelector("#language-div");
 var currencyEl = document.querySelector("#currency-div");
+var activeEl = document.querySelector("#active-div");
+var criticalEl = document.querySelector("#critical-div");
+var testEl = document.querySelector("#test-div");
+var casesTodayEl = document.querySelector("#cases-today");
+var deathsTodayEl = document.querySelector("#deaths-today");
+var recoveredTodayEl = document.querySelector("#recovered-today");
+var casesTotalEl = document.querySelector("#cases-total");
+var deathsTotalEl = document.querySelector("#deaths-total");
+var recoveredTotalEl = document.querySelector("#recovered-total");
 
 var countryStorage = [];
 
@@ -72,7 +81,6 @@ var getCovidInfo = function (countryName) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 displayCovidInfo(data);
             });
         } else {
@@ -95,24 +103,29 @@ var getCovidInfo = function (countryName) {
 var displayCovidInfo = function (data) {
     var countryName = data.country;
     countryTitleEl.textContent = countryName;
+
     var active = data.active;
-    console.log(active);
+    activeEl.textContent = "Active cases: " + active;
     var critical = data.critical;
-    console.log(critical);
-    var cases = data.cases;
-    console.log(cases);
-    var casesToday = data.todayCases;
-    console.log(casesToday);
-    var deaths = data.deaths;
-    console.log(deaths);
-    var deathsToday = data.todayDeaths;
-    console.log(deathsToday);
-    var recovered = data.recovered;
-    console.log(recovered);
-    var recoveredToday = data.todayRecovered;
-    console.log(recoveredToday);
+    criticalEl.textContent = "Critical cases: " + critical;
     var tests = data.tests;
-    console.log(tests);
+    testEl.textContent = "Total tests: " + tests;
+
+    var casesToday = data.todayCases;
+    casesTodayEl.textContent = "Cases today: " + casesToday;
+    var deathsToday = data.todayDeaths;
+    deathsTodayEl.textContent = "Deaths today: " + deathsToday;
+    var recoveredToday = data.todayRecovered;
+    recoveredTodayEl.textContent = "Recovered today: " + recoveredToday;
+
+    var cases = data.cases;
+    casesTotalEl.textContent = "Cases total: " + cases;
+    var deaths = data.deaths;
+    deathsTotalEl.textContent = "Deaths total: " + deaths;
+    var recovered = data.recovered;
+    recoveredTotalEl.textContent = "Recovered total: " + recovered;
+
+
 }
 
 var getMainInfo = function (countryName) {
@@ -121,7 +134,6 @@ var getMainInfo = function (countryName) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 displayMainInfo(data);
             });
         } else {

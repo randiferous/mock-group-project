@@ -29,6 +29,8 @@ api integration can be done before/separately from html basic layout
 - improvements: add vaccination info, make input field a dropdown menu, avoid repeats, add commas within the numbers
 - have create branches for 3 people (branch-daryl, branch-danny branch-sam)???
 - throughout project, i had to ask myself: am i forcing something? or can I settle for an easier simpler approach?
+- making this responsive is something to keep track of
+- why doesn't background cover full page
 
 Issue with Bulma: a lot of different fonts going on
 Issue with restcountry api: when searching for China, grabs Hong Kong first
