@@ -30,8 +30,7 @@ var formSubmitHandler = function (event) {
 
     if (countryName) {
         countryInputEl.value = "";
-        getCovidInfo(countryName);
-        getMainInfo(countryName);
+        saveCountry(countryName);
     } else {
         countryModal.style.display = "flex";
 
@@ -46,6 +45,8 @@ var saveCountry = function (countryName) {
     localStorage.setItem("countries", JSON.stringify(countryStorage));
 
     searchMenu(countryName);
+    getCovidInfo(countryName);
+    getMainInfo(countryName);
 };
 
 var loadCountry = function () {
@@ -83,7 +84,6 @@ var getCovidInfo = function (countryName) {
         if (response.ok) {
             response.json().then(function (data) {
                 displayCovidInfo(data);
-                saveCountry(countryName);
             });
         } else {
             searchModal.style.display = "flex";
