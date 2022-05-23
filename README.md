@@ -43,4 +43,5 @@ api integration can be done before/separately from html basic layout
 Issue with Bulma: a lot of different fonts going on
 Issue with restcountry api: when searching for China, grabs Hong Kong first
 
-Technology used: Discord, (Bulma)
+Technology used: Discord, Bulma
+What is our user story?
