@@ -107,21 +107,8 @@ var getCovidInfo = function (countryName) {
             response.json().then(function (data) {
                 displayCovidInfo(data);
             });
-        } else {
-            searchModal.style.display = "flex";
-
-            window.onclick = function (event) {
-                searchModal.style.display = "none";
-            }
-        }
+        } 
     })
-        .catch(function (error) {
-            errorModal.style.display = "flex";
-
-            window.onclick = function (event) {
-                errorModal.style.display = "none";
-            }
-        })
 };
 
 var displayCovidInfo = function (data) {
