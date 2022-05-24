@@ -3,7 +3,9 @@ The main purpose of this project is to learn how to communicate with a team when
 
 Another purpose of this project is being able to read through documentation and figure out how to use a certain API or framework in a timely manner. By requiring us to use at least 2 server-side APIs, we had to become aware of the kind of information available to us and how to access it.  And by requiring us to use a new CSS framework, we had to become familiar with a whole new set of class names and functionalities.
 
-In our first meeting, our group was able to immediately agree on an application idea. We were aware of the pitfall of spending too much time coming up with a feasible idea and understood it would be better to dedicate more time to the technical aspect of the project. We are also able to successfully establish our GitHub workflow by connecting all of our local repos to one remote repository and testing pushes and pulls from it.
+In our first meeting, our group was able to immediately agree on an application idea. We were aware of the pitfall of spending too much time coming up with a feasible idea and understood it would be better to dedicate more time to the technical aspect of the project. We were also able to successfully establish our GitHub workflow by connecting all of our local repos to one remote repository and testing pushes and pulls from it.
+
+Before our second meeting, we decided to transition to using Discord rather than Zoom for our group meetings. This was specifically due to Zoom's 40-minute restriction on our accounts (very annoying to deal with).  During our second meeting, we also decided to use Bulma as our CSS framework due to its simplicity and smooth mobile responsiveness. It's similarity to Bootstrap, especially with its 12-column system, was also a factor.  We were also able to begin building our HTML skeleton, including a header and form.
 
 
 Covid 19 related app? 
@@ -19,11 +21,6 @@ Bulma is a great alternative
 Animate.css for final touches
 (let group decide on this)
 
-Bulma vs Foundation
-- Foundation less line of code
-- Bulma has more features to play with
-- both are simple 
-
 Jira kanban is recommended, but might stick to github issues for convenience
 
 api integration can be done before/separately from html basic layout
@@ -37,11 +34,12 @@ api integration can be done before/separately from html basic layout
 - have create branches for 3 people (branch-daryl, branch-danny branch-sam)???
 - throughout project, i had to ask myself: am i forcing something? or can I settle for an easier simpler approach?
 - making this responsive is something to keep track of
-- why doesn't background cover full page
 - button size is bothering me
 
 Issue with Bulma: a lot of different fonts going on
 Issue with restcountry api: when searching for China, grabs Hong Kong first
 
-Technology used: Discord, Bulma
 What is our user story?
+- AS an inquisitive individual
+- I WANT to know Covid-19 information for multiple countries
+- SO THAT I can stay informed on the status of the pandemic

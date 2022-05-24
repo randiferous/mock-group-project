@@ -30,7 +30,7 @@ var formSubmitHandler = function (event) {
 
     if (countryName) {
         countryInputEl.value = "";
-        saveCountry(countryName);
+        confirmCountryName(countryName);
     } else {
         countryModal.style.display = "flex";
 
@@ -38,6 +38,28 @@ var formSubmitHandler = function (event) {
             countryModal.style.display = "none";
         }
     }
+};
+
+var confirmCountryName = function (countryName) {
+    var apiUrl = "https://disease.sh/v3/covid-19/countries/" + countryName;
+    fetch(apiUrl).then(function (response) {
+        if (response.ok) {
+            saveCountry(countryName)
+        } else {
+            searchModal.style.display = "flex";
+
+            window.onclick = function (event) {
+                searchModal.style.display = "none";
+            }
+        }
+    })
+        .catch(function (error) {
+            errorModal.style.display = "flex";
+
+            window.onclick = function (event) {
+                errorModal.style.display = "none";
+            }
+        })
 };
 
 var saveCountry = function (countryName) {
@@ -126,8 +148,6 @@ var displayCovidInfo = function (data) {
     deathsTotalEl.textContent = "Deaths total: " + deaths;
     var recovered = data.recovered;
     recoveredTotalEl.textContent = "Recovered total: " + recovered;
-
-
 }
 
 var getMainInfo = function (countryName) {
