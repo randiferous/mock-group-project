@@ -43,3 +43,5 @@ What is our user story?
 - AS an inquisitive individual
 - I WANT to know Covid-19 information for multiple countries
 - SO THAT I can stay informed on the status of the pandemic
+
+I am beginning to grasp Daryl and Sam's work style.  Sam likes to have Issues. Daryl writes descriptive commit messages.  I guess I like to keep things on track?  Also, both Sam and Daryl have great attitudes and friendly personalities, make it easy to work with. We have been working together for each step of the way. Our schedules mostly work out, especially between me and Daryl, since we both like to work into the night.

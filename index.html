@@ -14,10 +14,10 @@
   <section class="section">
     <div class="container">
       <h1 class="title is-1 has-text-centered">Covid-19 Tracker by Country</h1>
-      <div class="columns">
+      <div class="columns tile is-ancestor">
         <!-- form and search history -->
-        <div class="column is-4">
-          <form id="input-form">
+        <div class="column is-4 tile is-parent is-vertical">
+          <form id="input-form" class="tile is-child box">
             <div class="field m-0">
               <label class="label title is-4 has-text-centered m-0">Country Name</label>
               <div class="control column is-three-fifths is-offset-one-fifth">
@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="control is-flex is-justify-content-center">
-              <button class="button" type="submit">Submit</button>
+              <button class="button is-dark" type="submit">Submit</button>
             </div>
           </form>
           <aside class="menu">
@@ -37,44 +37,45 @@
           </aside>
         </div>
         <!-- country and covid information -->
-        <div class="column is-8">
-          <h1 id="country-title" class="is-size-2 has-text-centered is-underlined"></h1>
-          <div class="columns">
-            <div class="column is-4">
-              <div class="columns is-mobile is-flex is-justify-content-center">
-                <img id="country-flag" class="column is-6 is-one-quarter-mobile">
+        <div class="column is-8 tile is-parent is-vertical">
+          <div class="tile is-child box">
+            <h1 id="country-title" class="is-size-2 has-text-centered is-underlined"></h1>
+            <div class="columns">
+              <div class="column is-4">
+                <div class="columns is-mobile is-flex is-justify-content-center">
+                  <img id="country-flag" class="column is-6 is-one-quarter-mobile">
+                </div>
               </div>
+              <ul class="column is-4 has-text-weight-bold has-text-centered">
+                <li id="continent-div"></li>
+                <li id="subregion-div"></li>
+                <li id="capital-div"></li>
+              </ul>
+              <ul class="column is-4 has-text-weight-bold has-text-centered">
+                <li id="population-div"></li>
+                <li id="language-div"></li>
+                <li id="currency-div"></li>
+              </ul>
             </div>
-            <ul class="column is-4 has-text-weight-bold has-text-centered">
-              <li id="continent-div"></li>
-              <li id="subregion-div"></li>
-              <li id="capital-div"></li>
-            </ul>
-            <ul class="column is-4 has-text-weight-bold has-text-centered">
-              <li id="population-div"></li>
-              <li id="language-div"></li>
-              <li id="currency-div"></li>
-            </ul>
+            <h1 class="is-size-3 has-text-centered is-underlined">Covid-19 Information</h1>
+            <div class="columns is-size-5 has-text-weight-bold has-text-centered">
+              <ul class="column is-4">
+                <li id="active-div"></li>
+                <li id="critical-div"></li>
+                <li id="test-div"></li>
+              </ul>
+              <ul class="column is-4">
+                <li id="cases-today"></li>
+                <li id="deaths-today"></li>
+                <li id="recovered-today"></li>
+              </ul>
+              <ul class="column is-4">
+                <li id="cases-total"></li>
+                <li id="deaths-total"></li>
+                <li id="recovered-total"></li>
+              </ul>
+            </div>
           </div>
-          <h1 class="is-size-3 has-text-centered is-underlined">Covid-19 Information</h1>
-          <div class="columns is-size-5 has-text-weight-bold has-text-centered">
-            <ul class="column is-4">
-              <li id="active-div"></li>
-              <li id="critical-div"></li>
-              <li id="test-div"></li>
-            </ul>
-            <ul class="column is-4">
-              <li id="cases-today"></li>
-              <li id="deaths-today"></li>
-              <li id="recovered-today"></li>
-            </ul>
-            <ul class="column is-4">
-              <li id="cases-total"></li>
-              <li id="deaths-total"></li>
-              <li id="recovered-total"></li>
-            </ul>
-          </div>
-          </header>
         </div>
         <div id="country-modal" class="modal">
           <div class="modal-background"></div>

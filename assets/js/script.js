@@ -28,7 +28,7 @@ var formSubmitHandler = function (event) {
     event.preventDefault();
     var countryName = countryInputEl.value.trim();
 
-    if (countryName) {
+    if (countryName) { 
         countryInputEl.value = "";
         confirmCountryName(countryName);
     } else {
